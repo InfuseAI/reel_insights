@@ -16,6 +16,9 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
+      - name: Install DuckDB Binary
+        uses: opt-nc/setup-duckdb-action@v1.0.0
+
       - name: Download source data
         run: make
 
