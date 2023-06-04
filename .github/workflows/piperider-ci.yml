@@ -1,5 +1,5 @@
-name: pipeirder_ci
-run-name: piperider_ci
+name: Pull Request with PipeRider
+run-name: Pull Request with PipeRider
 
 on:
   pull_request:
@@ -16,7 +16,6 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: PipeRider Compare
-        working-directory: ./dbt_kgme
         uses: InfuseAI/piperider-compare-action@v1
         with:
           cloud_api_token: ${{ secrets.PIPERIDER_API_TOKEN }}
