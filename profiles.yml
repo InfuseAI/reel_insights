@@ -1,0 +1,6 @@
+reel_insights:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: imdb.duckdb
