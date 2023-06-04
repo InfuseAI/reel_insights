@@ -1,5 +1,5 @@
-name: pipeirder_ci
-run-name: piperider_ci
+name: Pull Request with PipeRider
+run-name: Pull Request with PipeRider
 
 on:
   pull_request:
@@ -13,10 +13,20 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Install DuckDB Binary
+        uses: supplypike/setup-bin@v3
+        with:
+          uri: 'https://github.com/duckdb/duckdb/releases/download/v0.8.0/duckdb_cli-linux-amd64.zip'
+          name: 'duckdb'
+          version: '0.8.0'
+
+      - name: Download source data
+        run: make
 
       - name: PipeRider Compare
-        working-directory: ./dbt_kgme
         uses: InfuseAI/piperider-compare-action@v1
         with:
           cloud_api_token: ${{ secrets.PIPERIDER_API_TOKEN }}
