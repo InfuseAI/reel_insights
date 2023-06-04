@@ -17,10 +17,11 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install DuckDB Binary
-        run: |
-          wget https://github.com/duckdb/duckdb/releases/download/v0.8.0/duckdb_cli-linux-amd64.zip
-          unzip duckdb_cli-linux-amd64.zip
-          mv duckdb /usr/bin
+        uses: supplypike/setup-bin@v3
+        with:
+          uri: 'https://github.com/duckdb/duckdb/releases/download/v0.8.0/duckdb_cli-linux-amd64.zip'
+          name: 'duckdb'
+          version: '0.8.0'
 
       - name: Download source data
         run: make
