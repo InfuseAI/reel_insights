@@ -23,9 +23,6 @@ jobs:
           name: 'duckdb'
           version: '0.8.0'
 
-      - name: Install DuckDB connector
-        run: pip install dbt-duckdb piperider[duckdb]
-
       - name: Download source data
         run: make
 
